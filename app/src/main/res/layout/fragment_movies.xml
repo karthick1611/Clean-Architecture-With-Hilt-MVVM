@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorAccent">
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/movieList"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_margin="3dp"
+      android:background="@color/colorAccent"
+      />
+
+  <ImageView
+      android:id="@+id/emptyView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:src="@mipmap/ic_batman"
+      android:visibility="gone"
+      android:scaleType="center"
+      android:paddingBottom="160dp"
+      android:contentDescription="@string/content_description_empty" />
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:layout_width="80dp"
+      android:layout_height="wrap_content"
+      android:id="@+id/fabImages"
+      android:layout_margin="15dp"
+      android:contentDescription="@string/content_description_empty"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentEnd="true"
+      android:src="@drawable/gallery"
+      app:fabSize="normal"
+      app:borderWidth="17dp"
+      app:useCompatPadding="true"/>
+
+</RelativeLayout>

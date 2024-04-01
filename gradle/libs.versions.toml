@@ -1,0 +1,94 @@
+[versions]
+# sdk -----------
+compileSdk = "33"
+minSdk = "24"
+targetSdk = "33"
+# kotlin ---------
+kotlin = "1.8.22"
+kotlinCoroutines = "1.7.2"
+# android --------
+agp = "8.3.1"
+coreKtx = "1.7.0"
+appcompat = "1.6.1"
+material = "1.9.0"
+#activity = "1.8.2"
+constraintlayout = "2.1.4"
+lifecycleCompiler = "2.6.1"
+lifecycleViewmodelKtx = "2.6.1"
+lifecycleLivedataKtx = "2.6.1"
+lifecycleExtensions = "2.2.0"
+annotation = "1.6.0"
+glide = "4.15.1"
+converterGson = "2.9.0"
+fragmentKtx = "1.6.1"
+# testing
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+# tooling -------
+leakcanaryAndroid = "2.12"
+# Hilt
+hilt-android = "2.44"
+hilt-version = "2.45"
+hilt-compiler = "1.0.0"
+hilt-lifecycle-viewmodel = "1.0.0-alpha03"
+
+#Room
+room-version = "2.4.2"
+#activity = "1.8.0"
+
+swipe-refresh = "1.1.0"
+
+[libraries]
+# main module dependencies ---
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+#androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
+
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleExtensions" }
+androidx-lifecycle-compiler = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycleCompiler" }
+
+androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+
+#Room
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room-version" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room-version" }
+#optional - Kotlin Extensions and Coroutines support for Room
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room-version" }
+
+#Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-version" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt-version" }
+hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hilt-compiler" }
+hilt-lifecycle-viewmodel = { group = "androidx.hilt", name = "hilt-lifecycle-viewmodel", version.ref = "hilt-lifecycle-viewmodel" }
+
+# Testing Libraries
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+# main module tooling dependencies --------
+leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
+
+#androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+swipe-refresh = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swipe-refresh" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt-android" }
+
