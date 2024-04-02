@@ -17,7 +17,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    internal var clickListener: (Photo, Navigator.Extras) -> Unit = { _, _ -> }
+    internal var clickListener: (ImageDetailsView, Navigator.Extras) -> Unit = { _, _ -> }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val imageBinding = GalleryListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -31,12 +31,12 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
     override fun getItemCount(): Int = collection.size
 
     class ViewHolder(private val binding : GalleryListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(photo: Photo, clickListener: (Photo, Navigator.Extras) -> Unit) {
+        fun bind(photo: Photo, clickListener: (ImageDetailsView, Navigator.Extras) -> Unit) {
             photo.src?.large?.let { binding.imageIv.loadFromUrl(it) }
             itemView.setOnClickListener {
                 clickListener(
-                    photo,
-                    Navigator.Extras(binding.layoutImages)
+                    ImageDetailsView(photo.id, photo.alt, photo.src?.large),
+                    Navigator.Extras(binding.imageIv)
                 )
             }
         }

@@ -15,71 +15,34 @@
  */
 package com.clean_architecture.hilt_mvvm.core.navigation
 
-import android.content.ActivityNotFoundException
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.FragmentActivity
 import com.clean_architecture.hilt_mvvm.core.credentials.Authenticator
-import com.clean_architecture.hilt_mvvm.core.extension.emptyString
+import com.clean_architecture.hilt_mvvm.feature.presentation.imagesGallery.ImageDetailsView
 import com.clean_architecture.hilt_mvvm.feature.presentation.imagesGallery.ImagesActivity
-import com.clean_architecture.hilt_mvvm.feature.presentation.movieDetails.MovieDetailsActivity
-import com.clean_architecture.hilt_mvvm.feature.presentation.moviesList.MovieView
-import com.clean_architecture.hilt_mvvm.feature.presentation.moviesList.MoviesListActivity
+import com.clean_architecture.hilt_mvvm.feature.presentation.imageDetails.ImageDetailsActivity
 import javax.inject.Inject
 
 class Navigator @Inject constructor(private val authenticator: Authenticator) {
 
-    private fun showLogin(context: Context) = context.startActivity(MoviesListActivity.callingIntent(context))
-
     fun showMain(context: Context) {
         when (authenticator.userLoggedIn()) {
-            true -> showMovies(context)
-            false -> showLogin(context)
+            true -> showImages(context)
+            false -> showImages(context)
         }
     }
 
-    private fun showMovies(context: Context) = context.startActivity(MoviesListActivity.callingIntent(context))
+    private fun showImages(context: Context) = context.startActivity(ImagesActivity.callingIntent(context))
 
-    fun showImages(context: Context) = context.startActivity(ImagesActivity.callingIntent(context))
-
-    fun showMovieDetails(activity: FragmentActivity, movie: MovieView, navigationExtras: Extras) {
-        val intent = MovieDetailsActivity.callingIntent(activity, movie)
+    fun showImageDetails(activity: FragmentActivity, photo: ImageDetailsView, navigationExtras: Extras) {
+        val intent = ImageDetailsActivity.callingIntent(activity, photo)
         val sharedView = navigationExtras.transitionSharedElement as ImageView
         val activityOptions = ActivityOptionsCompat
             .makeSceneTransitionAnimation(activity, sharedView, sharedView.transitionName)
         activity.startActivity(intent, activityOptions.toBundle())
-    }
-
-    private val videoUrlHttp = "http://www.youtube.com/watch?v="
-    private val videoUrlHttps = "https://www.youtube.com/watch?v="
-
-    fun openVideo(context: Context, videoUrl: String) {
-        try {
-            context.startActivity(createYoutubeIntent(videoUrl))
-        } catch (ex: ActivityNotFoundException) {
-            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl)))
-        }
-    }
-
-    private fun createYoutubeIntent(videoUrl: String): Intent {
-        val videoId = when {
-            videoUrl.startsWith(videoUrlHttp) -> videoUrl.replace(videoUrlHttp, emptyString())
-            videoUrl.startsWith(videoUrlHttps) -> videoUrl.replace(
-                videoUrlHttps,
-                emptyString()
-            )
-            else -> videoUrl
-        }
-
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:$videoId"))
-        intent.putExtra("force_fullscreen", true)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-
-        return intent
     }
 
     class Extras(val transitionSharedElement: View)

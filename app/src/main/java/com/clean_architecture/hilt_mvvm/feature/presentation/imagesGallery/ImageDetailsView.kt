@@ -19,4 +19,4 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ImageDetailsView(val id: Int, val poster: String) : Parcelable
+data class ImageDetailsView(val id: Int?, val desc: String?, val url: String?) : Parcelable
