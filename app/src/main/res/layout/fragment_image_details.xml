@@ -24,8 +24,8 @@
         app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
       <ImageView
-          android:id="@+id/moviePoster"
-          style="@style/MoviePoster"
+          android:id="@+id/imagePoster"
+          style="@style/ImagePoster"
           android:layout_height="240dp"
           android:layout_centerHorizontal="true"
           android:fitsSystemWindows="true"
@@ -44,7 +44,7 @@
       app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
-        android:id="@+id/movieDetails"
+        android:id="@+id/imageDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -54,56 +54,39 @@
         >
 
       <TextView
-          style="@style/MovieDetailsTitle"
-          android:text="@string/movie_details_summary"/>
+          style="@style/ImageDetailsTitle"
+          android:text="@string/image_details_summary"/>
       <TextView
-          android:id="@+id/movieSummary"
-          style="@style/MovieDetailsText"
+          android:id="@+id/imageSummary"
+          style="@style/ImageDetailsText"
           />
 
       <TextView
-          style="@style/MovieDetailsTitle"
-          android:text="@string/movie_details_cast"/>
+          style="@style/ImageDetailsTitle"
+          android:text="@string/image_details_cast"/>
       <TextView
-          android:id="@+id/movieCast"
-          style="@style/MovieDetailsText"
+          android:id="@+id/imageCast"
+          style="@style/ImageDetailsText"
           />
 
       <TextView
-          style="@style/MovieDetailsTitle"
-          android:text="@string/movie_details_director"/>
+          style="@style/ImageDetailsTitle"
+          android:text="@string/image_details_director"/>
       <TextView
-          android:id="@+id/movieDirector"
-          style="@style/MovieDetailsText"
+          android:id="@+id/imageDirector"
+          style="@style/ImageDetailsText"
           />
 
       <TextView
-          style="@style/MovieDetailsTitle"
-          android:text="@string/movie_details_year"/>
+          style="@style/ImageDetailsTitle"
+          android:text="@string/image_details_year"/>
       <TextView
-          android:id="@+id/movieYear"
-          style="@style/MovieDetailsText"
+          android:id="@+id/imageYear"
+          style="@style/ImageDetailsText"
           />
 
     </LinearLayout>
 
   </androidx.core.widget.NestedScrollView>
-
-  <com.google.android.material.floatingactionbutton.FloatingActionButton
-      android:id="@+id/moviePlay"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:clickable="true"
-      android:focusable="true"
-      android:src="@mipmap/ic_launcher"
-      android:layout_margin="20dp"
-      android:scaleY="0.0"
-      android:scaleX="0.0"
-      app:backgroundTint="@color/colorSecondary"
-      app:elevation="6dp"
-      app:layout_anchor="@id/appbar"
-      app:layout_anchorGravity="bottom|right"
-      app:fabSize="normal"
-      />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

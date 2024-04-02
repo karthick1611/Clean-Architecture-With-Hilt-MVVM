@@ -7,9 +7,9 @@ import com.clean_architecture.hilt_mvvm.feature.domain.model.ImageResponse
 import com.clean_architecture.hilt_mvvm.feature.use_case.UseCase
 import javax.inject.Inject
 
-class GetImages @Inject constructor(private val moviesRepository: PhotosRepositoryImpl) : UseCase<ImageResponse, GetImages.Params>() {
+class GetImages @Inject constructor(private val imagesRepository: PhotosRepositoryImpl) : UseCase<ImageResponse, GetImages.Params>() {
 
-    override suspend fun run(params: Params): Either<Failure, ImageResponse> = moviesRepository.images(params.search)
+    override suspend fun run(params: Params): Either<Failure, ImageResponse> = imagesRepository.images(params.search)
 
     data class Params(val search: String)
 }

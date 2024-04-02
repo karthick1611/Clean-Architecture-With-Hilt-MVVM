@@ -4,11 +4,7 @@ import com.clean_architecture.hilt_mvvm.core.failure.Failure
 import com.clean_architecture.hilt_mvvm.core.functional.Either
 import com.clean_architecture.hilt_mvvm.feature.data.data_source.PhotoDao
 import com.clean_architecture.hilt_mvvm.feature.domain.model.ImageResponse
-import com.clean_architecture.hilt_mvvm.feature.domain.model.Movie
-import com.clean_architecture.hilt_mvvm.feature.domain.model.MovieDetails
-import com.clean_architecture.hilt_mvvm.feature.domain.model.MovieDetailsEntity
 import com.clean_architecture.hilt_mvvm.feature.domain.repository.PhotoRepository
-import com.clean_architecture.hilt_mvvm.feature.data.network.apiService.ApiService
 import com.clean_architecture.hilt_mvvm.feature.data.network.apiService.ImagesApiService
 import com.clean_architecture.hilt_mvvm.feature.data.network.handler.NetworkHandler
 import retrofit2.Call
@@ -17,32 +13,9 @@ import javax.inject.Inject
 class PhotosRepositoryImpl
     @Inject constructor(
         private val dao: PhotoDao,
-        private val service: ApiService,
         private val imageService : ImagesApiService,
         private val networkHandler: NetworkHandler
 ) : PhotoRepository {
-
-    override fun movies(): Either<Failure, List<Movie>> {
-        return when (networkHandler.isNetworkAvailable()) {
-            true -> request(
-                service.movies(),
-                { it.map { movieEntity -> movieEntity.toMovie() } },
-                emptyList()
-            )
-            false -> Either.Left(Failure.NetworkConnection)
-        }
-    }
-
-    override fun movieDetails(movieId: Int): Either<Failure, MovieDetails> {
-        return when (networkHandler.isNetworkAvailable()) {
-            true -> request(
-                service.movieDetails(movieId),
-                { it.toMovieDetails() },
-                MovieDetailsEntity.empty
-            )
-            false -> Either.Left(Failure.NetworkConnection)
-        }
-    }
 
     override fun images(search: String): Either<Failure, ImageResponse> {
         return when(networkHandler.isNetworkAvailable()) {

@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="center"
+            android:transitionName="@string/image_transition_poster"
             android:contentDescription="@string/enter_keyword_to_search"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 

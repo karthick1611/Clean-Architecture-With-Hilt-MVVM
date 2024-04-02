@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.clean_architecture.hilt_mvvm.feature.presentation.movieDetails
+package com.clean_architecture.hilt_mvvm.feature.presentation.imageDetails
 
 import android.transition.Fade
 import android.transition.TransitionManager
@@ -25,7 +25,7 @@ import com.clean_architecture.hilt_mvvm.core.extension.cancelTransition
 import javax.inject.Inject
 
 
-class MovieDetailsAnimator @Inject constructor() {
+class ImageDetailsAnimator @Inject constructor() {
 
     internal fun postponeEnterTransition(activity: FragmentActivity) =
         activity.postponeEnterTransition()

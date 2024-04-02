@@ -20,9 +20,6 @@
             android:name=".feature.presentation.imagesGallery.ImagesActivity"
             android:exported="false" />
         <activity
-            android:name=".feature.presentation.moviesList.MoviesListActivity"
-            android:exported="false" /> <!-- Activities -->
-        <activity
             android:name=".core.navigation.RouteActivity"
             android:exported="true"
             android:noHistory="true"
@@ -34,9 +31,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature.presentation.movieDetails.MovieDetailsActivity"
+            android:name=".feature.presentation.imageDetails.ImageDetailsActivity"
             android:exported="true"
-            android:label="@string/movies_screen_title" />
+            android:label="@string/image_details_screen_title" />
     </application>
 
 </manifest>

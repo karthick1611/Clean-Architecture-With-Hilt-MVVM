@@ -6,7 +6,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import com.clean_architecture.hilt_mvvm.feature.data.network.apiService.ApiService
 import com.clean_architecture.hilt_mvvm.feature.data.network.apiService.ImagesApiService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -20,19 +19,8 @@ import javax.inject.Singleton
 object NetworkModule {
 
     private const val BASE_URL_IMAGES="https://api.pexels.com/v1/"
-    private const val BASE_URL="https://raw.githubusercontent.com/android10/Sample-Data/master/Android-CleanArchitecture-Kotlin/"
 //    private const val API_KEY="PASTE YOUR API KEY"
     private const val API_KEY="563492ad6f91700001000001a908a3ee509745d2b2173db3806f76f6"
-
-    @Provides
-    @Singleton
-    fun provideHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .connectTimeout(45, TimeUnit.SECONDS)
-            .writeTimeout(45, TimeUnit.SECONDS)
-            .readTimeout(45, TimeUnit.SECONDS)
-            .build()
-    }
 
     @Provides
     @Singleton
@@ -40,23 +28,6 @@ object NetworkModule {
         return GsonBuilder()
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
             .create()
-    }
-
-    @Provides
-    @Singleton
-    fun provideRetrofit(provideHttpClient: OkHttpClient, provideGsonBuilder : Gson): Retrofit.Builder {
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(provideHttpClient)
-            .addConverterFactory(GsonConverterFactory.create(provideGsonBuilder))
-    }
-
-    @Provides
-    @Singleton
-    fun provideService(retrofit: Retrofit.Builder): ApiService {
-        return retrofit
-            .build()
-            .create(ApiService::class.java)
     }
 
     @Provides
