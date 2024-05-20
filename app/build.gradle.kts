@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 class AppConfig {
     val id = "com.clean_architecture.hilt_mvvm"
     val versionCode = 1
@@ -11,7 +14,6 @@ class AppConfig {
     val javaVersion = JavaVersion.VERSION_17
     val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 }
-
 
 plugins {
     alias(libs.plugins.androidApplication)
@@ -36,9 +38,23 @@ android {
         versionName = appConfig.versionName
 
         testInstrumentationRunner = appConfig.testInstrumentationRunner
+
+        val apikeyPropertiesFile = rootProject.file("keys.properties")
+        val apikeyProperties = Properties()
+        apikeyProperties.load(FileInputStream(apikeyPropertiesFile))
+
+        // should correspond to key/value pairs inside the file
+        buildConfigField("String", "API_KEY_IMAGES", apikeyProperties["API_KEY_IMAGES"].toString())
     }
 
     buildTypes {
+        debug {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(

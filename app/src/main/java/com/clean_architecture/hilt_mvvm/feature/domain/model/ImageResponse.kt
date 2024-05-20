@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken
 import com.clean_architecture.hilt_mvvm.core.extension.empty
 import java.io.Serializable
 
-//@Entity(tableName = "Photos", indices = [Index(value = ["page"], unique = true)])
 @Entity(tableName = "Photos")
 data class ImageResponse(
     var next_page: String?,
