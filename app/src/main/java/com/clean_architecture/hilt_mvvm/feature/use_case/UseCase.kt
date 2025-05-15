@@ -48,4 +48,6 @@ abstract class UseCase<out Type, in Params> where Type : Any {
      * @see UseCase
      */
     class None
+
+    class DoNothing
 }
