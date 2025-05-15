@@ -26,5 +26,6 @@
 
     <string name="enter_keyword_to_search">Enter keyword to search</string>
     <string name="people">People</string>
+    <string name="str_min">min</string>
 
 </resources>

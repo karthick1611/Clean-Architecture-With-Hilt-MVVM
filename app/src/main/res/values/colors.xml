@@ -11,5 +11,7 @@
     <color name="colorTextSecondary">#7f1a18</color>
 
     <color name="translucentBackground">#ED000000</color>
+    <color name="closeColor">#42B549</color>
+    <color name="openColor">#FF8400</color>
 
 </resources>
